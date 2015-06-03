@@ -1,7 +1,7 @@
 {
   "name": "generator-mo",
   "description": "Yeoman generator for node module",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "keywords": [
     "yeoman-generator",
     "scaffold",
