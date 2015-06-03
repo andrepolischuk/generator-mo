@@ -1,0 +1,27 @@
+{
+  "name": "generator-mo",
+  "description": "Yeoman generator for node module",
+  "version": "0.0.0",
+  "keywords": [
+    "yeoman-generator",
+    "scaffold",
+    "node",
+    "module"
+  ],
+  "repository": "andrepolischuk/generator-mo",
+  "dependencies": {
+    "yeoman-generator": "^0.20.1",
+    "yosay": "^1.0.4",
+    "to-case": "^1.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5"
+  },
+  "main": "app/index.js",
+  "scripts": {
+    "pretest": "rm -rf temp",
+    "test": "mocha"
+  },
+  "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
+  "license": "MIT"
+}
