@@ -5,7 +5,7 @@
   "keywords": [
     ""
   ],
-  "repository": "<%= github %>/<%= name %>",
+  "repository": "<%= githubUsername %>/<%= name %>",
   "dependencies": {
     <% if (cli) { %>"commander": "^2.8.1"<% } %>
   },
@@ -17,6 +17,6 @@
   "scripts": {
     "test": "mocha"
   },
-  "author": "<%= author %> <<%= email %>>",
+  "author": "<%= githubName %> <<%= githubEmail %>>",
   "license": "MIT"
 }

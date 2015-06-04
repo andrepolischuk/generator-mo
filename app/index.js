@@ -4,6 +4,7 @@
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var to = require('to-case');
+var user = require('gh-user');
 
 module.exports = yeoman.generators.Base.extend({
   initializing: function() {
@@ -23,16 +24,8 @@ module.exports = yeoman.generators.Base.extend({
       message: 'Yout module description',
       default: '...'
     }, {
-      name: 'github',
+      name: 'githubUsername',
       message: 'Your github username',
-      store: true
-    }, {
-      name: 'author',
-      message: 'Your name',
-      store: true
-    }, {
-      name: 'email',
-      message: 'Your email address',
       store: true
     }, {
       name: 'cli',
@@ -45,11 +38,15 @@ module.exports = yeoman.generators.Base.extend({
       this.name = props.name;
       this.camelName = to.camel(this.name);
       this.description = props.description;
-      this.github = props.github;
-      this.author = props.author;
-      this.email = props.email;
+      this.githubUsername = props.githubUsername;
       this.cli = props.cli;
-      done();
+      var self = this;
+
+      user(this.githubUsername, function(err, user) {
+        self.githubName = user.name;
+        self.githubEmail = user.email;
+        done();
+      });
     }.bind(this));
   },
 
@@ -65,9 +62,5 @@ module.exports = yeoman.generators.Base.extend({
 
   install: function() {
     this.installDependencies({bower: false});
-    // this.installDependencies({
-    //   bower: false,
-    //   skipInstall: this.options['skip-install']
-    // });
   }
 });

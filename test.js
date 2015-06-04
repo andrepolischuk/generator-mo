@@ -13,9 +13,7 @@ describe('mo:app', function() {
       .withPrompts({
         name: 'test',
         description: 'Test',
-        github: 'test',
-        author: 'test',
-        email: 'test@test.com',
+        githubUsername: 'test',
         cli: true
       })
       .on('end', done);
