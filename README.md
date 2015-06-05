@@ -2,7 +2,7 @@
 
   > Yeoman generator for node module
 
-## Instalation
+## Install
 
 ```sh
 npm install --global generator-mo

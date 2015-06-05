@@ -2,7 +2,7 @@
 
   > <%= description %>
 
-## Instalation
+## Install
 
 ```sh
 npm install --save <%= name %>
