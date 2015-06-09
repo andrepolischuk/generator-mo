@@ -28,6 +28,11 @@ module.exports = yeoman.generators.Base.extend({
       message: 'Your github username',
       store: true
     }, {
+      name: 'es6',
+      message: 'Your module has ES2015 syntax',
+      type: 'confirm',
+			default: false
+    }, {
       name: 'cli',
       message: 'Your module needs a CLI',
       type: 'confirm',
@@ -39,6 +44,8 @@ module.exports = yeoman.generators.Base.extend({
       this.camelName = to.camel(this.name);
       this.description = props.description;
       this.githubUsername = props.githubUsername;
+      this.es6 = props.es6;
+      this.path = props.es6 ? 'es6/' : 'es5/';
       this.cli = props.cli;
       var self = this;
 
@@ -51,13 +58,14 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   app: function() {
-    this.copy('gitignore', '.gitignore');
     this.copy('travis.yml', '.travis.yml');
-    this.template('index.js', 'index.js');
-    this.template('test.js', 'test.js');
-    this.template('_package.json', 'package.json');
+    this.copy(this.path + 'gitignore', '.gitignore');
+    if (this.es6) this.copy(this.path + 'npmignore', '.npmignore');
+    if (this.cli) this.template(this.path + 'cli.js', 'cli.js');
+    this.template(this.path + 'index.js', 'index.js');
+    this.template(this.path + 'test.js', 'test.js');
+    this.template(this.path + '_package.json', 'package.json');
     this.template('README.md', 'README.md');
-    if (this.cli) this.template('cli.js', 'cli.js');
   },
 
   install: function() {

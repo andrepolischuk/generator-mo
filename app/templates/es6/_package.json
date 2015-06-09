@@ -1,0 +1,26 @@
+{
+  "name": "<%= name %>",
+  "description": "<%= description %>",
+  "version": "0.0.0",
+  "keywords": [
+    ""
+  ],
+  "repository": "<%= githubUsername %>/<%= name %>",
+  "dependencies": {
+    <% if (cli) { %>"commander": "^2.8.1"<% } %>
+  },
+  "devDependencies": {
+    "babel": "^5.5.6",
+    "mocha": "^2.2.5"
+  },
+  "main": "index.es5.js",<% if (cli) { %>
+  "bin": "cli.es5.js",<% } %>
+  "scripts": {
+    "test": "mocha --require babel/register",
+    "transpile": "babel index.js > index.es5.js<% if (cli) { %> && babel cli.js > cli.es5.js<% } %>",
+    "prepublish": "npm run transpile",
+    "postpublish": "rm -rf *.es5.js"
+  },
+  "author": "<%= githubName %> <<%= githubEmail %>>",
+  "license": "MIT"
+}

@@ -4,22 +4,23 @@
  * Module dependencies
  */
 
-var program = require('commander');
-var <%= camelName %> = require('./');
+import <%= camelName %> from './';
+import program from 'commander';
+import pkg from './package';
 
 /**
  * Program
  */
 
 program
-  .version(require('./package').version)
+  .version(pkg.version)
   .usage('[input]');
 
 /**
  * Examples
  */
 
-program.on('--help', function() {
+program.on('--help', () => {
   console.log('  Examples:');
   console.log();
   console.log('    # Hello world');
