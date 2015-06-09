@@ -19,7 +19,7 @@ module.exports = yeoman.generators.Base.extend({
       default: this.appname
     }, {
       name: 'description',
-      message: 'Yout module description',
+      message: 'Your module description',
       default: '...'
     }, {
       name: 'githubUsername',

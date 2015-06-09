@@ -5,7 +5,7 @@
 ```sh
 yo mo
 ? Your module name: module
-? Yout module description: My module
+? Your module description: My module
 ? Your github username: andrepolischuk
 ? Your module needs an ES2015 syntax? Yes
 ? Your module needs a CLI? Yes
