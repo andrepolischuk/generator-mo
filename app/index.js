@@ -2,7 +2,6 @@
 'use strict';
 
 var yeoman = require('yeoman-generator');
-var yosay = require('yosay');
 var to = require('to-case');
 var ghUser = require('gh-user');
 
@@ -13,7 +12,6 @@ module.exports = yeoman.generators.Base.extend({
 
   prompting: function() {
     var done = this.async();
-    this.log(yosay('Welcome to node module generator'));
 
     var prompts = [{
       name: 'name',
