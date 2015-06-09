@@ -4,7 +4,7 @@
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var to = require('to-case');
-var user = require('gh-user');
+var ghUser = require('gh-user');
 
 module.exports = yeoman.generators.Base.extend({
   initializing: function() {
@@ -49,7 +49,7 @@ module.exports = yeoman.generators.Base.extend({
       this.cli = props.cli;
       var self = this;
 
-      user(this.githubUsername, function(err, user) {
+      ghUser(this.githubUsername, function(err, user) {
         self.githubName = user.name;
         self.githubEmail = user.email;
         done();

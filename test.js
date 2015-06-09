@@ -13,7 +13,7 @@ describe('mo:es5', function() {
       .withPrompts({
         name: 'test',
         description: 'Test',
-        githubUsername: 'andrepolischuk',
+        githubUsername: 'test',
         es6: false,
         cli: true
       })
@@ -45,7 +45,7 @@ describe('mo:es6', function() {
       .withPrompts({
         name: 'test',
         description: 'Test',
-        githubUsername: 'andrepolischuk',
+        githubUsername: 'test',
         es6: true,
         cli: true
       })
