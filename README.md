@@ -8,7 +8,7 @@ yo mo
 ? Yout module description: My module
 ? Your github username: andrepolischuk
 ? Your module needs an ES2015 syntax? Yes
-? Your module needs a CLI? Yescd
+? Your module needs a CLI? Yes
    create package.json
    create .travis.yml
    create .gitignore
