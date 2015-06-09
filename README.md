@@ -3,7 +3,7 @@
   > Yeoman generator for node and browser modules with ES2015 syntax support
 
 ```sh
-λ yo mo
+yo mo
 ? Your module name: module
 ? Yout module description: My module
 ? Your github username: andrepolischuk
