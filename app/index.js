@@ -29,12 +29,12 @@ module.exports = yeoman.generators.Base.extend({
       store: true
     }, {
       name: 'es6',
-      message: 'Your module has ES2015 syntax',
+      message: 'Your module needs an ES2015 syntax?',
       type: 'confirm',
 			default: false
     }, {
       name: 'cli',
-      message: 'Your module needs a CLI',
+      message: 'Your module needs a CLI?',
       type: 'confirm',
 			default: false
     }];
