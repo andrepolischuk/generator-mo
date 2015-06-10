@@ -29,12 +29,12 @@ module.exports = yeoman.generators.Base.extend({
       name: 'es6',
       message: 'Your module needs an ES2015 syntax?',
       type: 'confirm',
-			default: false
+      default: false
     }, {
       name: 'cli',
       message: 'Your module needs a CLI?',
       type: 'confirm',
-			default: false
+      default: false
     }];
 
     this.prompt(prompts, function(props) {

@@ -1,6 +1,8 @@
 # generator-mo [![Build Status](https://travis-ci.org/andrepolischuk/generator-mo.svg?branch=master)](https://travis-ci.org/andrepolischuk/generator-mo)
 
-  > Yeoman generator for node and browser modules with ES2015 syntax support
+  > Yeoman generator for node and browser modules
+
+  With CLI and ES2015 syntax support
 
 ```sh
 yo mo
