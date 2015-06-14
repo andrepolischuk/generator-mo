@@ -1,4 +1,4 @@
-# <%= name %> [![Build Status](https://travis-ci.org/<%= githubUsername %>/<%= name %>.svg?branch=master)](https://travis-ci.org/<%= githubUsername %>/<%= name %>)
+# <%= name %> [![Build Status][travis-image]][travis-url]
 
   > <%= description %>
 
@@ -53,3 +53,6 @@ npm install --global <%= name %>
 ## License
 
   MIT
+
+[travis-url]: https://travis-ci.org/<%= githubUsername %>/<%= name %>
+[travis-image]: https://travis-ci.org/<%= githubUsername %>/<%= name %>.svg?branch=master

@@ -1,4 +1,4 @@
-# generator-mo [![Build Status](https://travis-ci.org/andrepolischuk/generator-mo.svg?branch=master)](https://travis-ci.org/andrepolischuk/generator-mo)
+# generator-mo [![Build Status][travis-image]][travis-url]
 
   > Yeoman generator for node and browser modules
 
@@ -36,3 +36,6 @@ yo mo
 ## License
 
   MIT
+
+[travis-url]: https://travis-ci.org/andrepolischuk/generator-mo
+[travis-image]: https://travis-ci.org/andrepolischuk/generator-mo.svg?branch=master
