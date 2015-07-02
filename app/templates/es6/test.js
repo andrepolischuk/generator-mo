@@ -1,5 +1,5 @@
 
-import <%= camelName %> from './';
+import <%= camelName %> from './index';
 import assert from 'assert';
 
 describe('<%= camelName %>', () => {
