@@ -16,7 +16,7 @@ module.exports = yeoman.generators.Base.extend({
     var prompts = [{
       name: 'name',
       message: 'Your module name',
-      default: this.appname
+      default: this.appname.replace(/\s/g, '-')
     }, {
       name: 'description',
       message: 'Your module description',
