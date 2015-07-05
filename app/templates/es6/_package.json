@@ -17,7 +17,7 @@
   "bin": "cli.es5.js",<% } %>
   "scripts": {
     "test": "mocha --require babel/register",
-    "transpile": "babel index.js > index.es5.js<% if (cli) { %> && babel cli.js > cli.es5.js<% } %>",
+    "transpile": "babel --stage 0 index.js > index.es5.js<% if (cli) { %> && babel --stage 0 cli.js > cli.es5.js<% } %>",
     "prepublish": "npm run transpile",
     "postpublish": "rm -rf *.es5.js"
   },
