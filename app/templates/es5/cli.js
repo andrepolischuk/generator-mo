@@ -1,23 +1,13 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies
- */
+'use strict';
 
 var <%= camelName %> = require('./');
 var program = require('commander');
 
-/**
- * Program
- */
-
 program
   .version(require('./package').version)
   .usage('[input]');
-
-/**
- * Examples
- */
 
 program.on('--help', function() {
   console.log('  Examples:');
@@ -30,14 +20,5 @@ program.on('--help', function() {
   console.log();
 });
 
-/**
- * Parse argv
- */
-
 program.parse(process.argv);
-
-/**
- * Out
- */
-
 console.log(<%= camelName %>(program.args[0]));

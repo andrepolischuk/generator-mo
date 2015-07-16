@@ -1,24 +1,12 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies
- */
-
 import <%= camelName %> from './';
 import program from 'commander';
 import pkg from './package';
 
-/**
- * Program
- */
-
 program
   .version(pkg.version)
   .usage('[input]');
-
-/**
- * Examples
- */
 
 program.on('--help', () => {
   console.log('  Examples:');
@@ -31,14 +19,5 @@ program.on('--help', () => {
   console.log();
 });
 
-/**
- * Parse argv
- */
-
 program.parse(process.argv);
-
-/**
- * Out
- */
-
 console.log(<%= camelName %>(program.args[0]));

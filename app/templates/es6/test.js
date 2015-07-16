@@ -1,4 +1,3 @@
-
 import <%= camelName %> from './index';
 import assert from 'assert';
 
