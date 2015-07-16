@@ -56,6 +56,7 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   app: function() {
+    this.copy('editorconfig', '.editorconfig');
     this.copy('travis.yml', '.travis.yml');
     this.copy(this.path + 'gitignore', '.gitignore');
     if (this.es6) this.copy(this.path + 'npmignore', '.npmignore');

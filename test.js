@@ -22,6 +22,7 @@ describe('mo:es5', function() {
 
   it('should generate files', function() {
     assert.file([
+      '.editorconfig',
       '.gitignore',
       '.travis.yml',
       'cli.js',
@@ -54,6 +55,7 @@ describe('mo:es6', function() {
 
   it('should generate files', function() {
     assert.file([
+      '.editorconfig',
       '.gitignore',
       '.npmignore',
       '.travis.yml',
