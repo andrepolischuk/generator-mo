@@ -12,6 +12,7 @@ yo mo
 ? Your module needs an ES2015 syntax? Yes
 ? Your module needs a CLI? Yes
    create package.json
+   create .editorconfig
    create .travis.yml
    create .gitignore
    create .npmignore
