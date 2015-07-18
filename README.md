@@ -1,15 +1,14 @@
 # generator-mo [![Build Status][travis-image]][travis-url]
 
-  > Yeoman generator for node and browser modules
+  > Yeoman generator for es6 node and browser modules
 
-  With CLI and ES2015 syntax support
+  With CLI support
 
 ```sh
 yo mo
 ? Your module name: module
 ? Your module description: My module
 ? Your github username: andrepolischuk
-? Your module needs an ES2015 syntax? Yes
 ? Your module needs a CLI? Yes
    create package.json
    create .editorconfig
