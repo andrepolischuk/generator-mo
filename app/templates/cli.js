@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import <%= camelName %> from './';
+import <%= camelName %> from './index';
 import program from 'commander';
 import pkg from './package';
 
