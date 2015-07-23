@@ -6,7 +6,6 @@ var join = require('path').join;
 
 describe('mo', function() {
   before(function(done) {
-    this.timeout(5000);
     helpers.run(join(__dirname, './app'))
       .inDir(join(__dirname, './temp'))
       .withOptions({'skip-install': true})
@@ -35,5 +34,6 @@ describe('mo', function() {
     assert.fileContent('package.json', /"name": "test"/);
     assert.fileContent('package.json', /"main": "index\.es5\.js"/);
     assert.fileContent('package.json', /"bin": "cli\.es5\.js"/);
+    assert.fileContent('package.json', /"author": "Andrey Polischuk <andre\.polischuk@gmail\.com> \(https:\/\/twitter\.com\/andrepolischuk\)"/);
   });
 });
