@@ -7,7 +7,7 @@
   ],
   "repository": "<%= githubUsername %>/<%= name %>",
   "dependencies": {
-    <% if (cli) { %>"commander": "^2.8.1"<% } %>
+    <% if (cli) { %>"meow": "^3.3.0"<% } %>
   },
   "devDependencies": {
     "babel": "^5.5.6",

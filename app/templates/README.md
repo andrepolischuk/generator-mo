@@ -33,19 +33,11 @@ npm install --global <%= name %>
 ```sh
 <%= name %> --help
 
-  Usage: <%= name %> [input]
+  Usage
+    <%= name %> [input]
 
-  Options:
-
-    -h, --help     output usage information
-    -V, --version  output the version number
-
-  Examples:
-
-    # Hello world
+  Examples
     <%= name %>
-
-    # Hello module
     <%= name %> module
 ```
 <% } %>
