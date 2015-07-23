@@ -6,13 +6,14 @@ var join = require('path').join;
 
 describe('mo', function() {
   before(function(done) {
+    this.timeout(5000);
     helpers.run(join(__dirname, './app'))
       .inDir(join(__dirname, './temp'))
       .withOptions({'skip-install': true})
       .withPrompts({
         name: 'test',
         description: 'Test',
-        githubUsername: 'test',
+        githubUsername: 'andrepolischuk',
         cli: true
       })
       .on('end', done);

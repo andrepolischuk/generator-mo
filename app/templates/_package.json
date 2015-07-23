@@ -21,6 +21,6 @@
     "prepublish": "npm run transpile",
     "postpublish": "rm -rf *.es5.js"
   },
-  "author": "<%= githubName %> <<%= githubEmail %>>",
+  "author": "<%= githubName %> <<%= githubEmail %>><% if (githubWebsite) { %> (<%= githubWebsite %>)<% } %>",
   "license": "MIT"
 }

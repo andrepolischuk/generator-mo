@@ -42,6 +42,7 @@ module.exports = yeoman.generators.Base.extend({
       ghUser(this.githubUsername, function(err, user) {
         self.githubName = user.name;
         self.githubEmail = user.email;
+        self.githubWebsite = user.blog;
         done();
       });
     }.bind(this));
