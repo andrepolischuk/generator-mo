@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 import <%= camelName %> from './index';
 import meow from 'meow';
 

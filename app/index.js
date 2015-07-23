@@ -1,5 +1,4 @@
 'use strict';
-
 var yeoman = require('yeoman-generator');
 var to = require('to-case');
 var ghUser = require('gh-user');

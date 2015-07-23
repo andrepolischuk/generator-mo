@@ -1,5 +1,4 @@
 'use strict';
-
 var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var join = require('path').join;
