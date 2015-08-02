@@ -36,14 +36,13 @@ module.exports = yeoman.generators.Base.extend({
       this.description = props.description;
       this.githubUsername = props.githubUsername;
       this.cli = props.cli;
-      var self = this;
 
       ghUser(this.githubUsername, function(err, user) {
-        self.githubName = user.name;
-        self.githubEmail = user.email;
-        self.githubWebsite = user.blog;
+        this.githubName = user.name;
+        this.githubEmail = user.email;
+        this.githubWebsite = user.blog;
         done();
-      });
+      }.bind(this));
     }.bind(this));
   },
 
