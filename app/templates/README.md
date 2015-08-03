@@ -13,8 +13,7 @@ npm install --save <%= name %>
 ```js
 var <%= camelName %> = require('<%= name %>');
 
-<%= camelName %>(); // 'Hello world'
-<%= camelName %>('module'); // 'Hello module'
+<%= camelName %>('world'); // Hello world
 ```
 
 ## API
@@ -34,11 +33,10 @@ npm install --global <%= name %>
 <%= name %> --help
 
   Usage
-    <%= name %> [input]
+    <%= name %> <input>
 
-  Examples
-    <%= name %>
-    <%= name %> module
+  Example
+    <%= name %> world
 ```
 <% } %>
 

@@ -1,12 +1,6 @@
-import <%= camelName %> from './index';
 import assert from 'assert';
+import <%= camelName %> from './index';
 
-describe('<%= camelName %>', () => {
-  it('should return `Hello world`', () => {
-    assert(<%= camelName %>() === 'Hello world');
-  });
-
-  it('should return `Hello module`', () => {
-    assert(<%= camelName %>('module') === 'Hello module');
-  });
+it('should <%= name %>', () => {
+  assert(<%= camelName %>('world') === 'Hello world');
 });

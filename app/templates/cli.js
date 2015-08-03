@@ -1,15 +1,14 @@
 #!/usr/bin/env node
-import <%= camelName %> from './index';
 import meow from 'meow';
+import <%= camelName %> from './index';
 
 const cli = meow({
   help: [
     'Usage',
-    '  <%= name %> [input]',
+    '  <%= name %> <input>',
     '',
-    'Examples',
-    '  <%= name %>',
-    '  <%= name %> module'
+    'Example',
+    '  <%= name %> world'
   ]
 });
 

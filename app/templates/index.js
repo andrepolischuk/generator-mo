@@ -1,3 +1,1 @@
-export default (input = `world`) => {
-  return `Hello ${input}`;
-};
+export default input => `Hello ${input}`;
