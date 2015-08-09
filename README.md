@@ -6,8 +6,8 @@
 
 ```sh
 yo mo
-? Your module name: module
-? Your module description: My module
+? Your module name: awesome-module
+? Your module description: My awesome module
 ? Your github username: andrepolischuk
 ? Your module needs a CLI? Yes
    create package.json
@@ -30,7 +30,11 @@ npm install --global generator-mo
 ## Usage
 
 ```sh
+mkdir awesome-module
+cd awesome-module
 yo mo
+git init
+git commit -am "Initial commit"
 ```
 
 ## License
