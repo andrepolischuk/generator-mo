@@ -11,15 +11,16 @@
   },
   "devDependencies": {
     "babel": "^5.5.6",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "rimraf": "^2.4.3"
   },
   "main": "index.es5.js",<% if (cli) { %>
   "bin": "cli.es5.js",<% } %>
   "scripts": {
     "test": "mocha --require babel/register",
-    "transpile": "babel --stage 0 index.js > index.es5.js<% if (cli) { %> && babel --stage 0 cli.js > cli.es5.js<% } %>",
+    "transpile": "babel --stage 0 index.js --out-file index.es5.js<% if (cli) { %> && babel --stage 0 cli.js --out-file cli.es5.js<% } %>",
     "prepublish": "npm run transpile",
-    "postpublish": "rm -rf *.es5.js"
+    "postpublish": "rimraf index.es5.js<% if (cli) { %> cli.es5.js<% } %>"
   },
   "author": "<%= githubName %> <<%= githubEmail %>><% if (githubWebsite) { %> (<%= githubWebsite %>)<% } %>",
   "license": "MIT"

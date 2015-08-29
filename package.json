@@ -17,11 +17,12 @@
     "yeoman-generator": "^0.20.1"
   },
   "devDependencies": {
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "rimraf": "^2.4.3"
   },
   "main": "app/index.js",
   "scripts": {
-    "pretest": "rm -rf temp",
+    "pretest": "rimraf temp",
     "test": "mocha"
   },
   "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
