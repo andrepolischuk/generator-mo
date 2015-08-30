@@ -1,8 +1,8 @@
 # generator-mo [![Build Status][travis-image]][travis-url]
 
-  > Yeoman generator for es6 node and browser modules
+> Yeoman generator for es6 node and browser modules
 
-  With CLI support
+With CLI support
 
 ```sh
 yo mo
@@ -39,7 +39,7 @@ git commit -am "Initial commit"
 
 ## License
 
-  MIT
+MIT
 
 [travis-url]: https://travis-ci.org/andrepolischuk/generator-mo
 [travis-image]: https://travis-ci.org/andrepolischuk/generator-mo.svg?branch=master

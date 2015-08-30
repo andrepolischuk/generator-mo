@@ -3,8 +3,8 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var join = require('path').join;
 
-describe('mo', function() {
-  before(function(done) {
+describe('mo', function () {
+  before(function (done) {
     helpers.run(join(__dirname, './app'))
       .inDir(join(__dirname, './temp'))
       .withOptions({'skip-install': true})
@@ -17,7 +17,7 @@ describe('mo', function() {
       .on('end', done);
   });
 
-  it('should generate files', function() {
+  it('should generate files', function () {
     assert.file([
       '.editorconfig',
       '.gitignore',

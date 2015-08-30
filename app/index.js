@@ -4,11 +4,7 @@ var to = require('to-case');
 var ghUser = require('gh-user');
 
 module.exports = yeoman.generators.Base.extend({
-  initializing: function() {
-    this.pkg = require('../package');
-  },
-
-  prompting: function() {
+  init: function () {
     var done = this.async();
 
     var prompts = [{
@@ -30,35 +26,32 @@ module.exports = yeoman.generators.Base.extend({
       default: false
     }];
 
-    this.prompt(prompts, function(props) {
+    this.prompt(prompts, function (props) {
       this.name = props.name;
       this.camelName = to.camel(this.name);
       this.description = props.description;
       this.githubUsername = props.githubUsername;
       this.cli = props.cli;
 
-      ghUser(this.githubUsername, function(err, user) {
+      ghUser(this.githubUsername, function (err, user) {
         this.githubName = user.name;
         this.githubEmail = user.email;
         this.githubWebsite = user.blog;
+        this.copy('editorconfig', '.editorconfig');
+        this.copy('travis.yml', '.travis.yml');
+        this.copy('gitignore', '.gitignore');
+        this.copy('npmignore', '.npmignore');
+        if (this.cli) this.template('cli.js', 'cli.js');
+        this.template('index.js', 'index.js');
+        this.template('test.js', 'test.js');
+        this.template('_package.json', 'package.json');
+        this.template('README.md', 'README.md');
         done();
       }.bind(this));
     }.bind(this));
   },
 
-  app: function() {
-    this.copy('editorconfig', '.editorconfig');
-    this.copy('travis.yml', '.travis.yml');
-    this.copy('gitignore', '.gitignore');
-    this.copy('npmignore', '.npmignore');
-    if (this.cli) this.template('cli.js', 'cli.js');
-    this.template('index.js', 'index.js');
-    this.template('test.js', 'test.js');
-    this.template('_package.json', 'package.json');
-    this.template('README.md', 'README.md');
-  },
-
-  install: function() {
+  install: function () {
     this.installDependencies({bower: false});
   }
 });

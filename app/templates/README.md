@@ -1,6 +1,6 @@
 # <%= name %> [![Build Status][travis-image]][travis-url]
 
-  > <%= description %>
+> <%= description %>
 
 ## Install
 
@@ -20,7 +20,7 @@ var <%= camelName %> = require('<%= name %>');
 
 ### <%= camelName %>(input)
 
-  ...
+...
 
 <% if (cli) { %>
 ## CLI
@@ -42,7 +42,7 @@ npm install --global <%= name %>
 
 ## License
 
-  MIT
+MIT
 
 [travis-url]: https://travis-ci.org/<%= githubUsername %>/<%= name %>
 [travis-image]: https://travis-ci.org/<%= githubUsername %>/<%= name %>.svg?branch=master
