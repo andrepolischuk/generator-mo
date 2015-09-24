@@ -17,13 +17,13 @@
     "yeoman-generator": "^0.20.1"
   },
   "devDependencies": {
-    "mocha": "^2.2.5",
+    "ava": "^0.2.0",
     "rimraf": "^2.4.3"
   },
   "main": "app/index.js",
   "scripts": {
     "pretest": "rimraf temp",
-    "test": "mocha"
+    "test": "node test.js"
   },
   "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
   "license": "MIT"
