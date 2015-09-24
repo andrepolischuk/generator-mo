@@ -1,6 +1,7 @@
-import assert from 'assert';
+import test from 'ava';
 import <%= camelName %> from './index';
 
-it('should <%= name %>', () => {
-  assert(<%= camelName %>('world') === 'Hello world');
+test('should return `Hello world`', t => {
+  t.plan(1);
+  t.true(<%= camelName %>('world') === 'Hello world');
 });

@@ -10,14 +10,14 @@
     <% if (cli) { %>"meow": "^3.3.0"<% } %>
   },
   "devDependencies": {
+    "ava": "^0.2.0",
     "babel": "^5.5.6",
-    "mocha": "^2.2.5",
     "rimraf": "^2.4.3"
   },
   "main": "index.es5.js",<% if (cli) { %>
   "bin": "cli.es5.js",<% } %>
   "scripts": {
-    "test": "mocha --require babel/register",
+    "test": "babel-node test.js",
     "transpile": "babel --stage 0 index.js --out-file index.es5.js<% if (cli) { %> && babel --stage 0 cli.js --out-file cli.es5.js<% } %>",
     "prepublish": "npm run transpile",
     "postpublish": "rimraf index.es5.js<% if (cli) { %> cli.es5.js<% } %>"
