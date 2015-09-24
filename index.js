@@ -1,13 +1,12 @@
-'use strict';
-var yeoman = require('yeoman-generator');
-var to = require('to-case');
-var ghUser = require('gh-user');
+import {Base} from 'yeoman-generator';
+import {camel} from 'to-case';
+import ghUser from 'gh-user';
 
-module.exports = yeoman.generators.Base.extend({
-  init: function () {
-    var done = this.async();
+export default class WebApp extends Base {
+  init() {
+    const done = this.async();
 
-    var prompts = [{
+    const prompts = [{
       name: 'name',
       message: 'Your module name',
       default: this.appname.replace(/\s/g, '-')
@@ -26,14 +25,14 @@ module.exports = yeoman.generators.Base.extend({
       default: false
     }];
 
-    this.prompt(prompts, function (props) {
+    this.prompt(prompts, props => {
       this.name = props.name;
-      this.camelName = to.camel(this.name);
+      this.camelName = camel(this.name);
       this.description = props.description;
       this.githubUsername = props.githubUsername;
       this.cli = props.cli;
 
-      ghUser(this.githubUsername, function (err, user) {
+      ghUser(this.githubUsername, (err, user) => {
         this.githubName = user.name;
         this.githubEmail = user.email;
         this.githubWebsite = user.blog;
@@ -49,9 +48,9 @@ module.exports = yeoman.generators.Base.extend({
         done();
       }.bind(this));
     }.bind(this));
-  },
+  }
 
-  install: function () {
+  install() {
     this.installDependencies({bower: false});
   }
-});
+};

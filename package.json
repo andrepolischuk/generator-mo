@@ -18,12 +18,18 @@
   },
   "devDependencies": {
     "ava": "^0.2.0",
+    "babel": "^5.8.23",
+    "npm-run-all": "^1.2.11",
     "rimraf": "^2.4.3"
   },
   "main": "app/index.js",
   "scripts": {
-    "pretest": "rimraf temp",
-    "test": "node test.js"
+    "clean": "rimraf temp",
+    "pretest": "npm-run-all clean transpile",
+    "test": "babel-node test.js",
+    "transpile": "babel --stage 0 index.js --out-file app/index.js",
+    "prepublish": "npm run transpile",
+    "postpublish": "rimraf app/index.js"
   },
   "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
   "license": "MIT"
