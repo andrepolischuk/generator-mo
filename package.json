@@ -6,7 +6,7 @@
     "yeoman-generator",
     "scaffold",
     "es6",
-    "ES2015"
+    "ES2015",
     "node",
     "browser",
     "module"
