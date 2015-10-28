@@ -12,12 +12,14 @@
   "devDependencies": {
     "ava": "^0.2.0",
     "babel": "^5.5.6",
+    "chokidar-cli": "^1.1.0",
     "rimraf": "^2.4.3"
   },
   "main": "index.es5.js",<% if (cli) { %>
   "bin": "cli.es5.js",<% } %>
   "scripts": {
     "test": "babel-node test.js",
+    "tdd": "chokidar \"*.js\" --command \"npm run test\" --initial",
     "transpile": "babel --stage 0 index.js --out-file index.es5.js<% if (cli) { %> && babel --stage 0 cli.js --out-file cli.es5.js<% } %>",
     "prepublish": "npm run transpile",
     "postpublish": "rimraf index.es5.js<% if (cli) { %> cli.es5.js<% } %>"

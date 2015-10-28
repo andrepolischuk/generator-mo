@@ -19,6 +19,7 @@
   "devDependencies": {
     "ava": "^0.2.0",
     "babel": "^5.8.23",
+    "chokidar-cli": "^1.1.0",
     "npm-run-all": "^1.2.11",
     "rimraf": "^2.4.3"
   },
@@ -27,6 +28,7 @@
     "clean": "rimraf temp",
     "pretest": "npm-run-all clean transpile",
     "test": "babel-node test.js",
+    "tdd": "chokidar \"*.js\" --command \"npm run test\" --initial",
     "transpile": "babel --stage 0 index.js --out-file app/index.js",
     "prepublish": "npm run transpile",
     "postpublish": "rimraf app/index.js"
