@@ -1,6 +1,6 @@
 # generator-mo [![Build Status][travis-image]][travis-url]
 
-> Yeoman generator for es6 node and browser modules
+> Yeoman generator for ES2015 node and browser modules
 
 With CLI support
 

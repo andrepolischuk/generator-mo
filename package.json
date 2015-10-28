@@ -1,11 +1,12 @@
 {
   "name": "generator-mo",
-  "description": "Yeoman generator for es6 node and browser modules",
+  "description": "Yeoman generator for ES2015 node and browser modules",
   "version": "0.8.1",
   "keywords": [
     "yeoman-generator",
     "scaffold",
     "es6",
+    "ES2015"
     "node",
     "browser",
     "module"
