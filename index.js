@@ -2,7 +2,7 @@ import {Base} from 'yeoman-generator';
 import {camel} from 'to-case';
 import ghUser from 'gh-user';
 
-export default class WebApp extends Base {
+export default class Module extends Base {
   init() {
     const done = this.async();
 
