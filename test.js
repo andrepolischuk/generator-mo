@@ -12,7 +12,7 @@ test.before(t => {
       githubUsername: 'andrepolischuk',
       cli: true
     })
-    .on('end', function () {
+    .on('end', () => {
       t.end();
     });
 });

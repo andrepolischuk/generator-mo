@@ -46,8 +46,8 @@ export default class Module extends Base {
         this.template('_package.json', 'package.json');
         this.template('README.md', 'README.md');
         done();
-      }.bind(this));
-    }.bind(this));
+      });
+    });
   }
 
   install() {
