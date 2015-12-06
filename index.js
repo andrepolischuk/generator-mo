@@ -36,6 +36,7 @@ export default class Module extends Base {
         this.githubName = user.name;
         this.githubEmail = user.email;
         this.githubWebsite = user.blog;
+        this.copy('babelrc', '.babelrc');
         this.copy('editorconfig', '.editorconfig');
         this.copy('travis.yml', '.travis.yml');
         this.copy('gitignore', '.gitignore');

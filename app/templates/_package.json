@@ -11,7 +11,8 @@
   },
   "devDependencies": {
     "ava": "^0.2.0",
-    "babel": "^5.5.6",
+    "babel-cli": "^6.3.15",
+    "babel-preset-es2015": "^6.3.13",
     "chokidar-cli": "^1.1.0",
     "rimraf": "^2.4.3"
   },
@@ -20,7 +21,7 @@
   "scripts": {
     "test": "babel-node test.js",
     "tdd": "chokidar \"*.js\" --command \"npm run test\" --initial",
-    "transpile": "babel --stage 0 index.js --out-file index.es5.js<% if (cli) { %> && babel --stage 0 cli.js --out-file cli.es5.js<% } %>",
+    "transpile": "babel index.js --out-file index.es5.js<% if (cli) { %> && babel cli.js --out-file cli.es5.js<% } %>",
     "prepublish": "npm run transpile",
     "postpublish": "rimraf index.es5.js<% if (cli) { %> cli.es5.js<% } %>"
   },
