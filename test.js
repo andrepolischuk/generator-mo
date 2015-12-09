@@ -19,7 +19,6 @@ test.before(t => {
 
 test('should generate files', t => {
   assert.file([
-    '.babelrc',
     '.editorconfig',
     '.gitignore',
     '.npmignore',

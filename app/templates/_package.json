@@ -10,7 +10,7 @@
     <% if (cli) { %>"meow": "^3.3.0"<% } %>
   },
   "devDependencies": {
-    "ava": "^0.2.0",
+    "ava": "^0.7.0",
     "babel-cli": "^6.3.15",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
@@ -20,10 +20,10 @@
   "main": "index.es5.js",<% if (cli) { %>
   "bin": "cli.es5.js",<% } %>
   "scripts": {
-    "test": "babel-node test.js",
+    "pretest": "npm run prepublish",
+    "test": "ava",
     "tdd": "chokidar \"*.js\" --command \"npm run test\" --initial",
-    "transpile": "babel index.js --out-file index.es5.js<% if (cli) { %> && babel cli.js --out-file cli.es5.js<% } %>",
-    "prepublish": "npm run transpile",
+    "prepublish": "babel --presets es2015,stage-0 index.js --out-file index.es5.js<% if (cli) { %> && babel --presets es2015,stage-0 cli.js --out-file cli.es5.js<% } %>",
     "postpublish": "rimraf index.es5.js<% if (cli) { %> cli.es5.js<% } %>"
   },
   "author": "<%= githubName %> <<%= githubEmail %>><% if (githubWebsite) { %> (<%= githubWebsite %>)<% } %>",
