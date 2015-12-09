@@ -18,7 +18,7 @@
     "yeoman-generator": "^0.20.1"
   },
   "devDependencies": {
-    "ava": "^0.2.0",
+    "ava": "^0.7.0",
     "babel": "^5.8.23",
     "chokidar-cli": "^1.1.0",
     "npm-run-all": "^1.2.11",
@@ -27,11 +27,10 @@
   "main": "app/index.js",
   "scripts": {
     "clean": "rimraf temp",
-    "pretest": "npm-run-all clean transpile",
-    "test": "babel-node test.js",
+    "pretest": "npm-run-all clean prepublish",
+    "test": "ava",
     "tdd": "chokidar \"*.js\" --command \"npm run test\" --initial",
-    "transpile": "babel --stage 0 index.js --out-file app/index.js",
-    "prepublish": "npm run transpile",
+    "prepublish": "babel --stage 0 index.js --out-file app/index.js",
     "postpublish": "rimraf app/index.js"
   },
   "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
