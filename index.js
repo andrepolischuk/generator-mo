@@ -26,25 +26,31 @@ export default class Module extends Base {
     }];
 
     this.prompt(prompts, props => {
-      this.name = props.name;
-      this.camelName = camel(this.name);
-      this.description = props.description;
-      this.githubUsername = props.githubUsername;
-      this.cli = props.cli;
+      ghUser(props.githubUsername, (err, user) => {
+        const tpl = {
+          name: props.name,
+          camelName: camel(props.name),
+          description: props.description,
+          githubUsername: props.githubUsername,
+          githubName: user.name,
+          githubEmail: user.email,
+          githubWebsite: user.blog,
+          cli: props.cli
+        };
 
-      ghUser(this.githubUsername, (err, user) => {
-        this.githubName = user.name;
-        this.githubEmail = user.email;
-        this.githubWebsite = user.blog;
-        this.copy('editorconfig', '.editorconfig');
-        this.copy('travis.yml', '.travis.yml');
-        this.copy('gitignore', '.gitignore');
-        this.copy('npmignore', '.npmignore');
-        if (this.cli) this.template('cli.js', 'cli.js');
-        this.template('index.js', 'index.js');
-        this.template('test.js', 'test.js');
-        this.template('_package.json', 'package.json');
-        this.template('README.md', 'README.md');
+        const mv = (from, to) => this.fs.move(this.destinationPath(from), this.destinationPath(to));
+
+        this.fs.copyTpl([
+          `${this.templatePath()}/**`,
+          '!**/cli.js'
+        ], this.destinationPath(), tpl);
+
+        if (props.cli) this.fs.copyTpl(this.templatePath('cli.js'), this.destinationPath('cli.js'), tpl);
+        mv('editorconfig', '.editorconfig');
+        mv('gitignore', '.gitignore');
+        mv('npmignore', '.npmignore');
+        mv('travis.yml', '.travis.yml');
+        mv('_package.json', 'package.json');
         done();
       });
     });
