@@ -1,17 +1,42 @@
 import test from 'ava';
 import {assert, test as helpers} from 'yeoman-generator';
 import {join} from 'path';
-
+import pify from 'pify';
 let generator;
 
-test.before.cb(t => {
-  helpers.testDirectory(join(__dirname, './temp'), () => {
-    generator = helpers.createGenerator('mo:app', ['../app'], null, {skipInstall: true});
-    t.end();
-  })
+test.beforeEach(async () => {
+  pify(helpers.testDirectory)(join(__dirname, 'temp'));
+  generator = helpers.createGenerator('mo:app', [join(__dirname, 'app')], null, {skipInstall: true});
 });
 
-test.cb('should generate files', t => {
+test.serial('should generate files', async () => {
+  helpers.mockPrompt(generator, {
+    name: 'test',
+    description: 'Test',
+    githubUsername: 'andrepolischuk',
+    cli: false
+  });
+
+  await pify(generator.run.bind(generator))();
+
+  assert.file([
+    '.editorconfig',
+    '.gitignore',
+    '.npmignore',
+    '.travis.yml',
+    'index.js',
+    'test.js',
+    'package.json',
+    'README.md'
+  ]);
+
+  assert.noFile('cli.js');
+  assert.fileContent('package.json', /"name": "test"/);
+  assert.fileContent('package.json', /"main": "index\.es5\.js"/);
+  assert.fileContent('package.json', /"author": "Andrey Polischuk <andre\.polischuk@gmail\.com> \(https:\/\/twitter\.com\/andrepolischuk\)"/);
+});
+
+test.serial('should generate files with CLI', async () => {
   helpers.mockPrompt(generator, {
     name: 'test',
     description: 'Test',
@@ -19,23 +44,23 @@ test.cb('should generate files', t => {
     cli: true
   });
 
-  generator.run(() => {
-    assert.file([
-      '.editorconfig',
-      '.gitignore',
-      '.npmignore',
-      '.travis.yml',
-      'cli.js',
-      'index.js',
-      'test.js',
-      'package.json',
-      'README.md'
-    ]);
+  await pify(generator.run.bind(generator))();
 
-    assert.fileContent('package.json', /"name": "test"/);
-    assert.fileContent('package.json', /"main": "index\.es5\.js"/);
-    assert.fileContent('package.json', /"bin": "cli\.es5\.js"/);
-    assert.fileContent('package.json', /"author": "Andrey Polischuk <andre\.polischuk@gmail\.com> \(https:\/\/twitter\.com\/andrepolischuk\)"/);
-    t.end();
-  });  
+  assert.file([
+    '.editorconfig',
+    '.gitignore',
+    '.npmignore',
+    '.travis.yml',
+    'index.js',
+    'cli.js',
+    'test.js',
+    'package.json',
+    'README.md'
+  ]);
+
+  assert.fileContent('package.json', /"name": "test"/);
+  assert.fileContent('package.json', /"main": "index\.es5\.js"/);
+  assert.fileContent('package.json', /"bin": "cli\.es5\.js"/);
+  assert.fileContent('package.json', /"meow"/);
+  assert.fileContent('package.json', /"author": "Andrey Polischuk <andre\.polischuk@gmail\.com> \(https:\/\/twitter\.com\/andrepolischuk\)"/);
 });
