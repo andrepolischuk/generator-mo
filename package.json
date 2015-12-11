@@ -32,7 +32,7 @@
     "pretest": "npm run prepublish",
     "test": "ava",
     "tdd": "chokidar \"*.js\" --command \"npm run test\" --initial",
-    "prepublish": "babel --presets es2015 --plugins add-module-exports index.js --out-file app/index.js",
+    "prepublish": "babel --presets es2015 --plugins add-module-exports src --out-dir app",
     "postpublish": "rimraf app/index.js"
   },
   "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
