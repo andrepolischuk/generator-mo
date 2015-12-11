@@ -33,7 +33,7 @@
     "test": "ava",
     "tdd": "chokidar \"*.js\" --command \"npm run test\" --initial",
     "prepublish": "babel --presets es2015 --plugins add-module-exports src --out-dir app",
-    "postpublish": "rimraf app/index.js"
+    "postpublish": "rimraf app/index.js && git push --follow-tags"
   },
   "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
   "license": "MIT"
