@@ -2,10 +2,11 @@ import test from 'ava';
 import {assert, test as helpers} from 'yeoman-generator';
 import {join} from 'path';
 import pify from 'pify';
+import Promise from 'pinkie-promise';
 let generator;
 
 test.beforeEach(async () => {
-  pify(helpers.testDirectory)(join(__dirname, 'temp'));
+  pify(helpers.testDirectory, Promise)(join(__dirname, 'temp'));
   generator = helpers.createGenerator('mo:app', [join(__dirname, 'app')], null, {skipInstall: true});
 });
 
@@ -17,7 +18,7 @@ test.serial('should generate files', async () => {
     cli: false
   });
 
-  await pify(generator.run.bind(generator))();
+  await pify(generator.run.bind(generator), Promise)();
 
   assert.file([
     '.editorconfig',
@@ -44,7 +45,7 @@ test.serial('should generate files with CLI', async () => {
     cli: true
   });
 
-  await pify(generator.run.bind(generator))();
+  await pify(generator.run.bind(generator), Promise)();
 
   assert.file([
     '.editorconfig',
