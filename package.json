@@ -34,7 +34,7 @@
   "scripts": {
     "pretest": "npm run prepublish",
     "test": "ava",
-    "tdd": "chokidar \"*.js\" --command \"npm run test\" --initial",
+    "tdd": "chokidar \"*.js\" \"src/*.js\" --command \"npm run test\" --initial",
     "prepublish": "babel --presets es2015 --plugins add-module-exports src --out-dir app",
     "postpublish": "rimraf app/index.js && git push --follow-tags"
   },
