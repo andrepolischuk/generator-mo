@@ -26,7 +26,7 @@ export default class Module extends Base {
     }];
 
     this.prompt(prompts, props => {
-      ghUser(props.githubUsername, (err, user) => {
+      ghUser(props.githubUsername).then(user => {
         const tpl = {
           name: props.name,
           camelName: camel(props.name),

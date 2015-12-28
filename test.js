@@ -1,5 +1,6 @@
 import test from 'ava';
-import {assert, test as helpers} from 'yeoman-generator';
+import assert from 'yeoman-assert';
+import helpers from 'yeoman-test';
 import {join} from 'path';
 import pify from 'pify';
 import Promise from 'pinkie-promise';
