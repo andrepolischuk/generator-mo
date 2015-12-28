@@ -1,11 +1,10 @@
 import {Base} from 'yeoman-generator';
 import {camel} from 'to-case';
 import ghUser from 'gh-user';
+import Promise from 'pinkie-promise';
 
 export default class Module extends Base {
   init() {
-    const done = this.async();
-
     const prompts = [{
       name: 'name',
       message: 'Your module name',
@@ -25,9 +24,15 @@ export default class Module extends Base {
       default: false
     }];
 
-    this.prompt(prompts, props => {
-      ghUser(props.githubUsername).then(user => {
-        const tpl = {
+    const prompt = prompts => new Promise((resolve, reject) => {
+      this.prompt(prompts, props => {
+        resolve(props);
+      })
+    });
+
+    const getTemplateProps = props => {
+      return ghUser(props.githubUsername)
+        .then(user => ({
           name: props.name,
           camelName: camel(props.name),
           description: props.description,
@@ -36,24 +41,31 @@ export default class Module extends Base {
           githubEmail: user.email,
           githubWebsite: user.blog,
           cli: props.cli
-        };
+        }));
+    };
 
-        const mv = (from, to) => this.fs.move(this.destinationPath(from), this.destinationPath(to));
+    const mv = (from, to) => this.fs.move(this.destinationPath(from), this.destinationPath(to));
 
-        this.fs.copyTpl([
-          `${this.templatePath()}/**`,
-          '!**/cli.js'
-        ], this.destinationPath(), tpl);
+    const createFiles = tpl => {
+      this.fs.copyTpl([
+        `${this.templatePath()}/**`,
+        '!**/cli.js'
+      ], this.destinationPath(), tpl);
 
-        if (props.cli) this.fs.copyTpl(this.templatePath('cli.js'), this.destinationPath('cli.js'), tpl);
-        mv('editorconfig', '.editorconfig');
-        mv('gitignore', '.gitignore');
-        mv('npmignore', '.npmignore');
-        mv('travis.yml', '.travis.yml');
-        mv('_package.json', 'package.json');
-        done();
-      });
-    });
+      if (tpl.cli) {
+        this.fs.copyTpl(this.templatePath('cli.js'), this.destinationPath('cli.js'), tpl);
+      }
+
+      mv('editorconfig', '.editorconfig');
+      mv('gitignore', '.gitignore');
+      mv('npmignore', '.npmignore');
+      mv('travis.yml', '.travis.yml');
+      mv('_package.json', 'package.json');
+    };
+
+    return prompt(prompts)
+      .then(getTemplateProps)
+      .then(createFiles);
   }
 
   install() {
