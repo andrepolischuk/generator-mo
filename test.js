@@ -6,7 +6,7 @@ import Promise from 'pinkie-promise';
 let generator;
 
 test.beforeEach(async () => {
-  pify(helpers.testDirectory, Promise)(join(__dirname, 'temp'));
+  await pify(helpers.testDirectory, Promise)(join(__dirname, 'temp'));
   generator = helpers.createGenerator('mo:app', [join(__dirname, 'app')], null, {skipInstall: true});
 });
 
