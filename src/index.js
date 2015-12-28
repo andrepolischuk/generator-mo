@@ -68,6 +68,10 @@ export default class Module extends Base {
       .then(createFiles);
   }
 
+  git() {
+    this.spawnCommandSync('git', ['init']);
+  }
+
   install() {
     this.installDependencies({bower: false});
   }

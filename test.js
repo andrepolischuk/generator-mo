@@ -23,6 +23,7 @@ test.serial('should generate files', async () => {
 
   assert.file([
     '.editorconfig',
+    '.git',
     '.gitignore',
     '.npmignore',
     '.travis.yml',
@@ -50,6 +51,7 @@ test.serial('should generate files with CLI', async () => {
 
   assert.file([
     '.editorconfig',
+    '.git',
     '.gitignore',
     '.npmignore',
     '.travis.yml',
