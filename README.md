@@ -33,7 +33,6 @@ npm install --global generator-mo
 mkdir awesome-module
 cd awesome-module
 yo mo
-git init
 git commit -am "Initial commit"
 ```
 
