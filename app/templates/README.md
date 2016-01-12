@@ -20,7 +20,11 @@ var <%= camelName %> = require('<%= name %>');
 
 ### <%= camelName %>(input)
 
-...
+#### input
+
+Type: `string`
+
+Input string.
 
 <% if (cli) { %>
 ## CLI
