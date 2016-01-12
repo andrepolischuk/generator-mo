@@ -2,7 +2,7 @@
 
 > Yeoman generator for ES2015 node and browser modules
 
-With CLI support
+With CLI support.
 
 ```sh
 yo mo
