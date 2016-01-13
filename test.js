@@ -22,6 +22,7 @@ test.serial('should generate files', async () => {
   await pify(generator.run.bind(generator), Promise)();
 
   assert.file([
+    '.babelrc',
     '.editorconfig',
     '.git',
     '.gitignore',
@@ -50,6 +51,7 @@ test.serial('should generate files with CLI', async () => {
   await pify(generator.run.bind(generator), Promise)();
 
   assert.file([
+    '.babelrc',
     '.editorconfig',
     '.git',
     '.gitignore',

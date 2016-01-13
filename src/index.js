@@ -56,6 +56,7 @@ export default class Module extends Base {
         this.fs.copyTpl(this.templatePath('cli.js'), this.destinationPath('cli.js'), tpl);
       }
 
+      mv('babelrc', '.babelrc');
       mv('editorconfig', '.editorconfig');
       mv('gitignore', '.gitignore');
       mv('npmignore', '.npmignore');
