@@ -24,10 +24,10 @@ export default class Module extends Base {
       default: false
     }];
 
-    const prompt = prompts => new Promise((resolve, reject) => {
+    const prompt = prompts => new Promise(resolve => {
       this.prompt(prompts, props => {
         resolve(props);
-      })
+      });
     });
 
     const getTemplateProps = props => {
