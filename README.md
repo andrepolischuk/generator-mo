@@ -11,14 +11,15 @@ yo mo
 ? Your github username: andrepolischuk
 ? Your module needs a CLI? Yes
    create package.json
+   create index.js
+   create README.md
+   create test.js
+   create cli.js
+   create .babelrc
    create .editorconfig
-   create .travis.yml
    create .gitignore
    create .npmignore
-   create cli.js
-   create index.js
-   create test.js
-   create README.md
+   create .travis.yml
 ```
 
 ## Install
