@@ -35,7 +35,7 @@
     "pretest": "npm run prepublish",
     "test": "ava",
     "tdd": "chokidar \"*.js\" \"src/*.js\" --command \"npm run test\" --initial",
-    "prepublish": "babel --presets es2015 --plugins add-module-exports src --out-dir app",
+    "prepublish": "babel src --out-dir app",
     "postpublish": "rimraf app/index.js && git push --follow-tags"
   },
   "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
