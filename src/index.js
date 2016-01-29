@@ -1,5 +1,5 @@
 import {Base} from 'yeoman-generator';
-import {camel} from 'to-case';
+import toCamelCase from 'to-camel-case';
 import ghUser from 'gh-user';
 import Promise from 'pinkie-promise';
 
@@ -34,7 +34,7 @@ export default class Module extends Base {
       return ghUser(props.githubUsername)
         .then(user => ({
           name: props.name,
-          camelName: camel(props.name),
+          camelName: toCamelCase(props.name),
           description: props.description,
           githubUsername: props.githubUsername,
           githubName: user.name,
