@@ -2,7 +2,10 @@
 
 > Yeoman generator for ES2015 node and browser modules
 
-With CLI support.
+* ES2015
+* Testing with [AVA][ava]
+* Ready to use with [Travis CI][travis]
+* With CLI support
 
 ```sh
 yo mo
@@ -34,7 +37,7 @@ npm install --global generator-mo
 mkdir awesome-module
 cd awesome-module
 yo mo
-git commit -am "Initial commit"
+git commit -am 'Initial commit'
 ```
 
 ## License
@@ -43,3 +46,6 @@ MIT
 
 [travis-url]: https://travis-ci.org/andrepolischuk/generator-mo
 [travis-image]: https://travis-ci.org/andrepolischuk/generator-mo.svg?branch=master
+
+[ava]: https://github.com/sindresorhus/ava
+[travis]: https://travis-ci.org/
