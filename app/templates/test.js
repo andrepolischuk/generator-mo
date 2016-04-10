@@ -1,6 +1,6 @@
 import test from 'ava';
-import <%= camelName %> from './index.es5';
+import <%= camelName %> from './index';
 
-test('should return `Hello world`', t => {
-  t.true(<%= camelName %>('world') === 'Hello world');
+test('return `Hello world`', t => {
+  t.is(<%= camelName %>('world'), 'Hello world');
 });
