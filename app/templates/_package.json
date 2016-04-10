@@ -20,6 +20,10 @@
   },
   "main": "index.es5.js",<% if (cli) { %>
   "bin": "cli.es5.js",<% } %>
+  "files": [<% if (cli) { %>
+    "cli.es5.js",<% } %>
+    "index.es5.js"
+  ],
   "scripts": {
     "test": "ava --require babel-register",
     "tdd": "chokidar \"*.js\" --ignore \"*.es5.js\" --command \"npm run test\" --initial",

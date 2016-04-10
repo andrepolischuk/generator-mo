@@ -59,7 +59,6 @@ export default class Module extends Base {
       mv('babelrc', '.babelrc');
       mv('editorconfig', '.editorconfig');
       mv('gitignore', '.gitignore');
-      mv('npmignore', '.npmignore');
       mv('travis.yml', '.travis.yml');
       mv('_package.json', 'package.json');
     };
