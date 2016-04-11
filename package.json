@@ -1,7 +1,22 @@
 {
   "name": "generator-mo",
-  "description": "Yeoman generator for ES2015 node and browser modules",
   "version": "1.1.1",
+  "description": "Yeoman generator for ES2015 node and browser modules",
+  "main": "app/index.js",
+  "files": [
+    "app"
+  ],
+  "scripts": {
+    "pretest": "npm run prepublish",
+    "test": "ava",
+    "tdd": "chokidar \"*.js\" \"src/*.js\" --command \"npm run test\" --initial",
+    "prepublish": "babel src --out-dir app",
+    "postpublish": "rimraf app/index.js && git push --follow-tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrepolischuk/generator-mo.git"
+  },
   "keywords": [
     "yeoman-generator",
     "scaffold",
@@ -11,7 +26,12 @@
     "browser",
     "module"
   ],
-  "repository": "andrepolischuk/generator-mo",
+  "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andrepolischuk/generator-mo/issues"
+  },
+  "homepage": "https://github.com/andrepolischuk/generator-mo#readme",
   "dependencies": {
     "gh-user": "^2.1.0",
     "pinkie-promise": "^2.0.1",
@@ -29,18 +49,5 @@
     "rimraf": "^2.5.2",
     "yeoman-assert": "^2.1.2",
     "yeoman-test": "^1.1.0"
-  },
-  "main": "app/index.js",
-  "files": [
-    "app"
-  ],
-  "scripts": {
-    "pretest": "npm run prepublish",
-    "test": "ava",
-    "tdd": "chokidar \"*.js\" \"src/*.js\" --command \"npm run test\" --initial",
-    "prepublish": "babel src --out-dir app",
-    "postpublish": "rimraf app/index.js && git push --follow-tags"
-  },
-  "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
-  "license": "MIT"
+  }
 }
