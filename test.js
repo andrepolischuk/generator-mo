@@ -11,7 +11,7 @@ test.beforeEach(async () => {
   generator = helpers.createGenerator('mo:app', [join(__dirname, 'app')], null, {skipInstall: true});
 });
 
-test.serial('should generate files', async () => {
+test.serial('generate files', async () => {
   helpers.mockPrompt(generator, {
     name: 'test',
     description: 'Test',
@@ -39,7 +39,7 @@ test.serial('should generate files', async () => {
   assert.fileContent('package.json', /"author": "Andrey Polischuk <andre\.polischuk@gmail\.com> \(https:\/\/twitter\.com\/andrepolischuk\)"/);
 });
 
-test.serial('should generate files with CLI', async () => {
+test.serial('generate files with CLI', async () => {
   helpers.mockPrompt(generator, {
     name: 'test',
     description: 'Test',

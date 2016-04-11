@@ -4,11 +4,13 @@ import ghUser from 'gh-user';
 import Promise from 'pinkie-promise';
 
 export default class Module extends Base {
-  init() {
-    const prompts = [{
+  initializing() {
+    const name = this.appname.replace(/\s/g, '-');
+
+    const questions = [{
       name: 'name',
       message: 'Your module name',
-      default: this.appname.replace(/\s/g, '-')
+      default: name
     }, {
       name: 'description',
       message: 'Your module description',
@@ -24,25 +26,22 @@ export default class Module extends Base {
       default: false
     }];
 
-    const prompt = prompts => new Promise(resolve => {
-      this.prompt(prompts, props => {
+    const prompting = questions => new Promise(resolve => {
+      this.prompt(questions, props => {
         resolve(props);
       });
     });
 
-    const getTemplateProps = props => {
-      return ghUser(props.githubUsername)
-        .then(user => ({
-          name: props.name,
-          camelName: toCamelCase(props.name),
-          description: props.description,
-          githubUsername: props.githubUsername,
-          githubName: user.name,
-          githubEmail: user.email,
-          githubWebsite: user.blog,
-          cli: props.cli
-        }));
-    };
+    const getTemplateProps = props => ghUser(props.githubUsername).then(user => ({
+      name: props.name,
+      camelName: toCamelCase(props.name),
+      description: props.description,
+      githubUsername: props.githubUsername,
+      githubName: user.name,
+      githubEmail: user.email,
+      githubWebsite: user.blog,
+      cli: props.cli
+    }));
 
     const mv = (from, to) => this.fs.move(this.destinationPath(from), this.destinationPath(to));
 
@@ -62,7 +61,7 @@ export default class Module extends Base {
       mv('_package.json', 'package.json');
     };
 
-    return prompt(prompts)
+    return prompting(questions)
       .then(getTemplateProps)
       .then(createFiles)
       .catch(err => {
@@ -74,9 +73,7 @@ export default class Module extends Base {
     this.composeWith('travis', {}, {
       local: require.resolve('generator-travis')
     });
-  }
 
-  git() {
     this.spawnCommandSync('git', ['init']);
   }
 
