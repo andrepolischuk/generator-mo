@@ -59,13 +59,21 @@ export default class Module extends Base {
       mv('babelrc', '.babelrc');
       mv('editorconfig', '.editorconfig');
       mv('gitignore', '.gitignore');
-      mv('travis.yml', '.travis.yml');
       mv('_package.json', 'package.json');
     };
 
     return prompt(prompts)
       .then(getTemplateProps)
-      .then(createFiles);
+      .then(createFiles)
+      .catch(err => {
+        throw err;
+      });
+  }
+
+  writing() {
+    this.composeWith('travis', {}, {
+      local: require.resolve('generator-travis')
+    });
   }
 
   git() {
