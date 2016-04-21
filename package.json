@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/andrepolischuk/generator-mo#readme",
   "dependencies": {
+    "generator-babel": "^2.0.2",
     "generator-travis": "^1.2.4",
     "gh-user": "^2.1.0",
     "pinkie-promise": "^2.0.1",

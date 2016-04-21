@@ -55,7 +55,6 @@ export default class Module extends Base {
         this.fs.copyTpl(this.templatePath('cli.js'), this.destinationPath('cli.js'), tpl);
       }
 
-      mv('babelrc', '.babelrc');
       mv('editorconfig', '.editorconfig');
       mv('gitignore', '.gitignore');
       mv('_package.json', 'package.json');
@@ -70,14 +69,31 @@ export default class Module extends Base {
   }
 
   writing() {
-    this.composeWith('travis', {}, {
-      local: require.resolve('generator-travis')
+    const deps = {
+      travis: {},
+      babel: {
+        options: {
+          'skip-install': this.options['skip-install'],
+          config: {
+            presets: ['es2015'],
+            plugins: ['add-module-exports']
+          }
+        }
+      }
+    };
+
+    Object.keys(deps).forEach(name => {
+      this.composeWith(name, deps[name], {
+        local: require.resolve(`generator-${name}`)
+      });
     });
 
     this.spawnCommandSync('git', ['init']);
   }
 
   install() {
-    this.installDependencies({bower: false});
+    if (!this.options['skip-install']) {
+      this.npmInstall();
+    }
   }
 };
