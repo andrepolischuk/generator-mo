@@ -61,6 +61,7 @@ export default class Module extends Base {
       }
 
       mv('editorconfig', '.editorconfig');
+      mv('eslintrc.json', '.eslintrc.json');
       mv('gitignore', '.gitignore');
       mv('_package.json', 'package.json');
     };

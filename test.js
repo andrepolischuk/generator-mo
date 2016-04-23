@@ -25,6 +25,7 @@ test.serial('generate files', async () => {
   assert.file([
     '.babelrc',
     '.editorconfig',
+    '.eslintrc.json',
     '.git',
     '.gitignore',
     '.travis.yml',
@@ -53,6 +54,7 @@ test.serial('generate files with CLI', async () => {
   assert.file([
     '.babelrc',
     '.editorconfig',
+    '.eslintrc.json',
     '.git',
     '.gitignore',
     '.travis.yml',
