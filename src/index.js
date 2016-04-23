@@ -1,33 +1,38 @@
-import {Base} from 'yeoman-generator';
-import toCamelCase from 'to-camel-case';
+import { Base } from 'yeoman-generator';
 import ghUser from 'gh-user';
 import Promise from 'pinkie-promise';
+import toCamelCase from 'to-camel-case';
 
 export default class Module extends Base {
   initializing() {
     const name = this.appname.replace(/\s/g, '-');
 
-    const questions = [{
-      name: 'name',
-      message: 'Your module name',
-      default: name
-    }, {
-      name: 'description',
-      message: 'Your module description',
-      default: '...'
-    }, {
-      name: 'githubUsername',
-      message: 'Your github username',
-      store: true
-    }, {
-      name: 'cli',
-      message: 'Your module needs a CLI?',
-      type: 'confirm',
-      default: false
-    }];
+    const questions = [
+      {
+        name: 'name',
+        message: 'Your module name',
+        default: name
+      },
+      {
+        name: 'description',
+        message: 'Your module description',
+        default: '...'
+      },
+      {
+        name: 'githubUsername',
+        message: 'Your github username',
+        store: true
+      },
+      {
+        name: 'cli',
+        message: 'Your module needs a CLI?',
+        type: 'confirm',
+        default: false
+      }
+    ];
 
-    const prompting = questions => new Promise(resolve => {
-      this.prompt(questions, props => {
+    const prompting = q => new Promise(resolve => {
+      this.prompt(q, props => {
         resolve(props);
       });
     });
@@ -75,8 +80,8 @@ export default class Module extends Base {
         options: {
           'skip-install': this.options['skip-install'],
           config: {
-            presets: ['es2015'],
-            plugins: ['add-module-exports']
+            presets: [ 'es2015' ],
+            plugins: [ 'add-module-exports' ]
           }
         }
       }
@@ -88,7 +93,7 @@ export default class Module extends Base {
       });
     });
 
-    this.spawnCommandSync('git', ['init']);
+    this.spawnCommandSync('git', [ 'init' ]);
   }
 
   install() {
@@ -96,4 +101,4 @@ export default class Module extends Base {
       this.npmInstall();
     }
   }
-};
+}

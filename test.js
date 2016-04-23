@@ -1,14 +1,15 @@
+/* eslint-disable max-len */
 import test from 'ava';
-import assert from 'yeoman-assert';
-import helpers from 'yeoman-test';
-import {join} from 'path';
 import pify from 'pify';
+import helpers from 'yeoman-test';
+import assert from 'yeoman-assert';
 import Promise from 'pinkie-promise';
+
 let generator;
 
 test.beforeEach(async () => {
-  await pify(helpers.testDirectory, Promise)(join(__dirname, 'temp'));
-  generator = helpers.createGenerator('mo:app', [join(__dirname, 'app')], null, {'skip-install': true});
+  await pify(helpers.testDirectory, Promise)(`${__dirname}/temp`);
+  generator = helpers.createGenerator('mo:app', [ `${__dirname}/app` ], null, { 'skip-install': true });
 });
 
 test.serial('generate files', async () => {
