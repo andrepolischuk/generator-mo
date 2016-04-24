@@ -61,7 +61,6 @@ export default class Module extends Base {
       }
 
       mv('editorconfig', '.editorconfig');
-      mv('eslintrc.json', '.eslintrc.json');
       mv('gitignore', '.gitignore');
       mv('_package.json', 'package.json');
     };
@@ -83,6 +82,20 @@ export default class Module extends Base {
           config: {
             presets: [ 'es2015' ],
             plugins: [ 'add-module-exports' ]
+          }
+        }
+      },
+      'eslint-init': {
+        options: {
+          'skip-install': this.options['skip-install'],
+          config: {
+            parser: 'babel-eslint',
+            extends: 'airbnb-base',
+            rules: {
+              'comma-dangle': [ 'error', 'never' ],
+              'array-bracket-spacing': [ 'error', 'always' ]
+            },
+            plugins: [ 'import', 'require-path-exists' ]
           }
         }
       }
