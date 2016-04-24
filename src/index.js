@@ -31,8 +31,8 @@ export default class Module extends Base {
       }
     ];
 
-    const prompting = q => new Promise(resolve => {
-      this.prompt(q, props => {
+    const prompting = input => new Promise(resolve => {
+      this.prompt(input, props => {
         resolve(props);
       });
     });
@@ -74,37 +74,34 @@ export default class Module extends Base {
   }
 
   writing() {
-    const deps = {
+    const configs = {
       travis: {},
       babel: {
-        options: {
-          'skip-install': this.options['skip-install'],
-          config: {
-            presets: [ 'es2015' ],
-            plugins: [ 'add-module-exports' ]
-          }
-        }
+        presets: [ 'es2015' ],
+        plugins: [ 'add-module-exports' ]
       },
       'eslint-init': {
-        options: {
-          'skip-install': this.options['skip-install'],
-          config: {
-            parser: 'babel-eslint',
-            extends: 'airbnb-base',
-            rules: {
-              'comma-dangle': [ 'error', 'never' ],
-              'array-bracket-spacing': [ 'error', 'always' ]
-            },
-            plugins: [ 'import', 'require-path-exists' ]
-          }
-        }
+        parser: 'babel-eslint',
+        extends: 'airbnb-base',
+        rules: {
+          'comma-dangle': [ 'error', 'never' ],
+          'array-bracket-spacing': [ 'error', 'always' ]
+        },
+        plugins: [ 'import', 'require-path-exists' ]
       }
     };
 
-    Object.keys(deps).forEach(name => {
-      this.composeWith(name, deps[name], {
-        local: require.resolve(`generator-${name}`)
-      });
+    Object.keys(configs).forEach(generator => {
+      const config = configs[generator];
+
+      this.composeWith(
+        generator,
+        { options: {
+          config,
+          'skip-install': this.options['skip-install']
+        } },
+        { local: require.resolve(`generator-${generator}`) }
+      );
     });
 
     this.spawnCommandSync('git', [ 'init' ]);
