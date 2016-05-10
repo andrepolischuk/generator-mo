@@ -30,15 +30,15 @@ export default class Module extends Base {
       }
     ];
 
-    const getTemplateProps = props => ghUser(props.githubUsername).then(user => ({
-      name: props.name,
-      camelName: toCamelCase(props.name),
-      description: props.description,
-      githubUsername: props.githubUsername,
+    const composeTemplate = answers => ghUser(answers.githubUsername).then(user => ({
+      name: answers.name,
+      camelName: toCamelCase(answers.name),
+      description: answers.description,
+      cli: answers.cli,
+      githubUsername: answers.githubUsername,
       githubName: user.name,
       githubEmail: user.email,
-      githubWebsite: user.blog,
-      cli: props.cli
+      githubWebsite: user.blog
     }));
 
     const mv = (from, to) => this.fs.move(this.destinationPath(from), this.destinationPath(to));
@@ -59,7 +59,7 @@ export default class Module extends Base {
     };
 
     return this.prompt(questions)
-      .then(getTemplateProps)
+      .then(composeTemplate)
       .then(createFiles)
       .catch(err => {
         throw err;
