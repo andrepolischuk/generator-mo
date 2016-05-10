@@ -51,7 +51,6 @@
     "eslint": "^2.8.0",
     "eslint-config-airbnb-base": "^1.0.3",
     "eslint-plugin-import": "^1.5.0",
-    "eslint-plugin-require-path-exists": "^1.1.5",
     "npm-run-all": "^1.7.0",
     "pify": "^2.3.0",
     "rimraf": "^2.5.2",

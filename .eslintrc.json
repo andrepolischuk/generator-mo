@@ -7,6 +7,6 @@
     "array-bracket-spacing": ["error", "always"]
   },
   "plugins": [
-    "require-path-exists"
+    "import"
   ]
 }

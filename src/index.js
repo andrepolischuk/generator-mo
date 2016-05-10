@@ -87,7 +87,7 @@ export default class Module extends Base {
           'comma-dangle': [ 'error', 'never' ],
           'array-bracket-spacing': [ 'error', 'always' ]
         },
-        plugins: [ 'import', 'require-path-exists' ]
+        plugins: [ 'import' ]
       }
     };
 
