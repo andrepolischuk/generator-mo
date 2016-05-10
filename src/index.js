@@ -1,6 +1,5 @@
 import { Base } from 'yeoman-generator';
 import ghUser from 'gh-user';
-import Promise from 'pinkie-promise';
 import toCamelCase from 'to-camel-case';
 
 export default class Module extends Base {
@@ -31,12 +30,6 @@ export default class Module extends Base {
       }
     ];
 
-    const prompting = input => new Promise(resolve => {
-      this.prompt(input, props => {
-        resolve(props);
-      });
-    });
-
     const getTemplateProps = props => ghUser(props.githubUsername).then(user => ({
       name: props.name,
       camelName: toCamelCase(props.name),
@@ -65,7 +58,7 @@ export default class Module extends Base {
       mv('_package.json', 'package.json');
     };
 
-    return prompting(questions)
+    return this.prompt(questions)
       .then(getTemplateProps)
       .then(createFiles)
       .catch(err => {
