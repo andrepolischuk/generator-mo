@@ -37,6 +37,7 @@
     "generator-travis": "^1.2.4",
     "gh-user": "^2.1.0",
     "pinkie-promise": "^2.0.1",
+    "spawn-sync": "^1.0.15",
     "to-camel-case": "^1.0.0",
     "yeoman-generator": "^0.23.3"
   },
