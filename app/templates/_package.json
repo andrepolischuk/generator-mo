@@ -2,7 +2,8 @@
   "name": "<%= name %>",
   "version": "0.0.0",
   "description": "<%= description %>",
-  "main": "index.es5.js",<% if (cli) { %>
+  "main": "index.es5.js",
+  "jsnext:main": "index.js",<% if (cli) { %>
   "bin": "cli.es5.js",<% } %>
   "files": [<% if (cli) { %>
     "cli.es5.js",<% } %>
