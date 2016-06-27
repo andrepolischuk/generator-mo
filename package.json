@@ -1,6 +1,6 @@
 {
   "name": "generator-mo",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Simple generator for node and browser modules",
   "main": "app/index.js",
   "files": [
