@@ -31,7 +31,7 @@
     <% if (cli) { %>"meow": "^3.3.0"<% } %>
   },
   "devDependencies": {
-    "ava": "^0.14.0",
+    "ava": "^0.15.2",
     "babel-cli": "^6.7.5",
     "babel-eslint": "^6.0.3",
     "babel-plugin-add-module-exports": "^0.2.0",
