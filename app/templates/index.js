@@ -1,1 +1,3 @@
-export default input => `Hello ${input}`;
+export default function <%= camelName %>(input) {
+  return `Hello ${input}`;
+}
