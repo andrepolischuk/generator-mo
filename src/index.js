@@ -1,12 +1,15 @@
 import { Base } from 'yeoman-generator';
-import ghUser from 'gh-user';
+import getUser from 'gh-user';
+import getUsername from 'github-username';
 import toCamelCase from 'to-camel-case';
 
 export default class Module extends Base {
   initializing() {
+    const email = this.user.git.email();
+    const prompt = this.prompt.bind(this);
     const name = this.appname.replace(/\s/g, '-');
 
-    const questions = [
+    const composeQuestions = username => [
       {
         name: 'name',
         message: 'Your module name',
@@ -18,8 +21,9 @@ export default class Module extends Base {
         default: '...'
       },
       {
-        name: 'githubUsername',
+        name: 'username',
         message: 'Your github username',
+        default: username,
         store: true
       },
       {
@@ -30,15 +34,15 @@ export default class Module extends Base {
       }
     ];
 
-    const composeTemplate = answers => ghUser(answers.githubUsername).then(user => ({
+    const composeTemplate = answers => getUser(answers.username).then(githubUser => ({
       name: answers.name,
       camelName: toCamelCase(answers.name),
       description: answers.description,
       cli: answers.cli,
-      githubUsername: answers.githubUsername,
-      githubName: user.name,
-      githubEmail: user.email,
-      githubWebsite: user.blog
+      githubUsername: githubUser.login,
+      githubName: githubUser.name,
+      githubEmail: githubUser.email,
+      githubWebsite: githubUser.blog
     }));
 
     const mv = (from, to) => this.fs.move(this.destinationPath(from), this.destinationPath(to));
@@ -58,7 +62,9 @@ export default class Module extends Base {
       mv('_package.json', 'package.json');
     };
 
-    return this.prompt(questions)
+    return getUsername(email)
+      .then(composeQuestions)
+      .then(prompt)
       .then(composeTemplate)
       .then(createFiles)
       .catch(err => {

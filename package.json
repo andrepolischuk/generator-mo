@@ -36,6 +36,7 @@
     "generator-eslint-init": "^1.1.0",
     "generator-travis": "^1.2.4",
     "gh-user": "^2.1.0",
+    "github-username": "^3.0.0",
     "pinkie-promise": "^2.0.1",
     "spawn-sync": "^1.0.15",
     "to-camel-case": "^1.0.0",

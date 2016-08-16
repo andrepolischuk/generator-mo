@@ -16,7 +16,7 @@ test.serial('generate files', async () => {
   helpers.mockPrompt(generator, {
     name: 'test',
     description: 'Test',
-    githubUsername: 'andrepolischuk',
+    username: 'andrepolischuk',
     cli: false
   });
 
@@ -45,7 +45,7 @@ test.serial('generate files with CLI', async () => {
   helpers.mockPrompt(generator, {
     name: 'test',
     description: 'Test',
-    githubUsername: 'andrepolischuk',
+    username: 'andrepolischuk',
     cli: true
   });
 
