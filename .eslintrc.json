@@ -4,7 +4,10 @@
   "rules": {
     "comma-dangle": ["error", "never"],
     "jsx-quotes": ["error", "prefer-single"],
-    "array-bracket-spacing": ["error", "always"]
+    "array-bracket-spacing": ["error", "always"],
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": true
+    }]
   },
   "plugins": [
     "import"
