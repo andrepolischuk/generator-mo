@@ -3,12 +3,11 @@ import test from 'ava';
 import pify from 'pify';
 import helpers from 'yeoman-test';
 import assert from 'yeoman-assert';
-import Promise from 'pinkie-promise';
 
 let generator;
 
 test.beforeEach(async () => {
-  await pify(helpers.testDirectory, Promise)(`${__dirname}/temp`);
+  await pify(helpers.testDirectory)(`${__dirname}/temp`);
   generator = helpers.createGenerator('mo:app', [ `${__dirname}/app` ], null, { 'skip-install': true });
 });
 
@@ -20,7 +19,7 @@ test.serial('generate files', async () => {
     cli: false
   });
 
-  await pify(generator.run.bind(generator), Promise)();
+  await pify(generator.run.bind(generator))();
 
   assert.file([
     '.babelrc',
@@ -49,7 +48,7 @@ test.serial('generate files with CLI', async () => {
     cli: true
   });
 
-  await pify(generator.run.bind(generator), Promise)();
+  await pify(generator.run.bind(generator))();
 
   assert.file([
     '.babelrc',

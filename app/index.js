@@ -1,19 +1,21 @@
-import { Base } from 'yeoman-generator';
-import getUser from 'gh-user';
-import getUsername from 'github-username';
-import toCamelCase from 'to-camel-case';
+/* eslint-disable strict */
+'use strict';
+const Base = require('yeoman-generator').Base;
+const toSlugCase = require('to-slug-case');
+const toCamelCase = require('to-camel-case');
+const getUser = require('gh-user');
+const getUsername = require('github-username');
 
-export default class Module extends Base {
+module.exports = class Module extends Base {
   initializing() {
     const email = this.user.git.email();
     const prompt = this.prompt.bind(this);
-    const name = this.appname.replace(/\s/g, '-');
 
     const composeQuestions = username => [
       {
         name: 'name',
         message: 'Your module name',
-        default: name
+        default: toSlugCase(this.appname)
       },
       {
         name: 'description',
@@ -111,4 +113,4 @@ export default class Module extends Base {
       this.npmInstall();
     }
   }
-}
+};
