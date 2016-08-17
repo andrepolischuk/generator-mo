@@ -3,13 +3,21 @@
 const Base = require('yeoman-generator').Base;
 const toSlugCase = require('to-slug-case');
 const toCamelCase = require('to-camel-case');
-const getUser = require('gh-user');
-const getUsername = require('github-username');
+const githubUser = require('gh-user');
+const githubUsername = require('github-username');
 
 module.exports = class Module extends Base {
   initializing() {
-    const email = this.user.git.email();
     const prompt = this.prompt.bind(this);
+    const gitEmail = this.user.git.email();
+
+    const getUsername = email => {
+      if (email) {
+        return githubUsername(email);
+      }
+
+      return Promise.resolve('');
+    };
 
     const composeQuestions = username => [
       {
@@ -36,15 +44,15 @@ module.exports = class Module extends Base {
       }
     ];
 
-    const composeTemplate = answers => getUser(answers.username).then(githubUser => ({
+    const composeTemplate = answers => githubUser(answers.username).then(user => ({
       name: answers.name,
       camelName: toCamelCase(answers.name),
       description: answers.description,
       cli: answers.cli,
-      githubUsername: githubUser.login,
-      githubName: githubUser.name,
-      githubEmail: githubUser.email,
-      githubWebsite: githubUser.blog
+      githubUsername: user.login,
+      githubName: user.name,
+      githubEmail: user.email,
+      githubWebsite: user.blog
     }));
 
     const mv = (from, to) => this.fs.move(this.destinationPath(from), this.destinationPath(to));
@@ -64,7 +72,7 @@ module.exports = class Module extends Base {
       mv('_package.json', 'package.json');
     };
 
-    return getUsername(email)
+    return getUsername(gitEmail)
       .then(composeQuestions)
       .then(prompt)
       .then(composeTemplate)
