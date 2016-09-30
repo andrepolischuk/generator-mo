@@ -10,7 +10,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "eslint . && ava",
+    "test": "eslint *.js app/*.js && ava",
     "postpublish": "git push --follow-tags"
   },
   "repository": {

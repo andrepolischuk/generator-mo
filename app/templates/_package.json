@@ -10,7 +10,7 @@
     "index.es5.js"
   ],
   "scripts": {
-    "test": "eslint . && ava --require babel-register",
+    "test": "eslint *.js && ava --require babel-register",
     "prepublish": "babel index.js --out-file index.es5.js<% if (cli) { %> && babel cli.js --out-file cli.es5.js<% } %>",
     "postpublish": "rimraf index.es5.js<% if (cli) { %> cli.es5.js<% } %> && git push --follow-tags"
   },
