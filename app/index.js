@@ -1,5 +1,7 @@
 /* eslint-disable strict */
+
 'use strict';
+
 const Generator = require('yeoman-generator');
 const toSlugCase = require('to-slug-case');
 const toCamelCase = require('to-camel-case');
@@ -11,7 +13,7 @@ module.exports = class Module extends Generator {
     const prompt = this.prompt.bind(this);
     const gitEmail = this.user.git.email();
 
-    const getUsername = email => {
+    const getUsername = (email) => {
       if (email) {
         return githubUsername(email);
       }
@@ -57,7 +59,7 @@ module.exports = class Module extends Generator {
 
     const mv = (from, to) => this.fs.move(this.destinationPath(from), this.destinationPath(to));
 
-    const createFiles = tpl => {
+    const createFiles = (tpl) => {
       this.fs.copyTpl([
         `${this.templatePath()}/**`,
         '!**/cli.js'
@@ -77,7 +79,7 @@ module.exports = class Module extends Generator {
       .then(prompt)
       .then(composeTemplate)
       .then(createFiles)
-      .catch(err => {
+      .catch((err) => {
         throw err;
       });
   }
@@ -86,21 +88,21 @@ module.exports = class Module extends Generator {
     const configs = {
       travis: {},
       babel: {
-        presets: [ 'es2015' ],
-        plugins: [ 'add-module-exports' ]
+        presets: ['es2015'],
+        plugins: ['add-module-exports']
       },
       'eslint-init': {
         parser: 'babel-eslint',
         extends: 'airbnb-base',
         rules: {
-          'comma-dangle': [ 'error', 'never' ],
-          'array-bracket-spacing': [ 'error', 'always' ]
+          'comma-dangle': ['error', 'never'],
+          'array-bracket-spacing': ['error', 'always']
         },
-        plugins: [ 'import' ]
+        plugins: ['import']
       }
     };
 
-    Object.keys(configs).forEach(generator => {
+    Object.keys(configs).forEach((generator) => {
       const config = configs[generator];
 
       this.composeWith(
@@ -112,7 +114,7 @@ module.exports = class Module extends Generator {
       );
     });
 
-    this.spawnCommandSync('git', [ 'init' ]);
+    this.spawnCommandSync('git', ['init']);
   }
 
   install() {

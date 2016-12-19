@@ -2,12 +2,7 @@
   "parser": "babel-eslint",
   "extends": "airbnb-base",
   "rules": {
-    "comma-dangle": ["error", "never"],
-    "jsx-quotes": ["error", "prefer-single"],
-    "array-bracket-spacing": ["error", "always"],
-    "import/no-extraneous-dependencies": ["error", {
-      "devDependencies": true
-    }]
+    "comma-dangle": ["error", "never"]
   },
   "plugins": [
     "import"
