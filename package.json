@@ -41,7 +41,7 @@
     "spawn-sync": "^1.0.15",
     "to-camel-case": "^1.0.0",
     "to-slug-case": "^1.0.0",
-    "yeoman-generator": "^0.24.1"
+    "yeoman-generator": "^1.0.0"
   },
   "devDependencies": {
     "ava": "^0.16.0",

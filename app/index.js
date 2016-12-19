@@ -1,12 +1,12 @@
 /* eslint-disable strict */
 'use strict';
-const Base = require('yeoman-generator').Base;
+const Generator = require('yeoman-generator');
 const toSlugCase = require('to-slug-case');
 const toCamelCase = require('to-camel-case');
 const githubUser = require('gh-user');
 const githubUsername = require('github-username');
 
-module.exports = class Module extends Base {
+module.exports = class Module extends Generator {
   initializing() {
     const prompt = this.prompt.bind(this);
     const gitEmail = this.user.git.email();
@@ -104,12 +104,11 @@ module.exports = class Module extends Base {
       const config = configs[generator];
 
       this.composeWith(
-        generator,
-        { options: {
+        require.resolve(`generator-${generator}`),
+        {
           config,
           'skip-install': this.options['skip-install']
-        } },
-        { local: require.resolve(`generator-${generator}`) }
+        }
       );
     });
 
