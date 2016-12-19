@@ -94,10 +94,6 @@ module.exports = class Module extends Generator {
       'eslint-init': {
         parser: 'babel-eslint',
         extends: 'airbnb-base',
-        rules: {
-          'comma-dangle': ['error', 'never'],
-          'array-bracket-spacing': ['error', 'always']
-        },
         plugins: ['import']
       }
     };
