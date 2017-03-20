@@ -38,7 +38,7 @@ test.serial('generate files', async () => {
   assert.noFile('cli.js');
   assert.fileContent('package.json', /"name": "test"/);
   assert.fileContent('package.json', /"main": "index\.es5\.js"/);
-  assert.fileContent('package.json', /"author": "Andrey Polischuk <andre\.polischuk@gmail\.com> \(https:\/\/twitter\.com\/andrepolischuk\)"/);
+  assert.fileContent('package.json', /"author": "Andrey Polischuk <me@andrepolischuk\.com> \(https:\/\/andrepolischuk\.com\)"/);
 });
 
 test.serial('generate files with CLI', async () => {
@@ -70,5 +70,5 @@ test.serial('generate files with CLI', async () => {
   assert.fileContent('package.json', /"main": "index\.es5\.js"/);
   assert.fileContent('package.json', /"bin": "cli\.es5\.js"/);
   assert.fileContent('package.json', /"meow"/);
-  assert.fileContent('package.json', /"author": "Andrey Polischuk <andre\.polischuk@gmail\.com> \(https:\/\/twitter\.com\/andrepolischuk\)"/);
+  assert.fileContent('package.json', /"author": "Andrey Polischuk <me@andrepolischuk\.com> \(https:\/\/andrepolischuk\.com\)"/);
 });
