@@ -31,6 +31,7 @@ test.serial('generate files', async () => {
     'index.js',
     'test.js',
     'package.json',
+    'LICENSE',
     'README.md'
   ]);
 
@@ -61,6 +62,7 @@ test.serial('generate files with CLI', async () => {
     'cli.js',
     'test.js',
     'package.json',
+    'LICENSE',
     'README.md'
   ]);
 
