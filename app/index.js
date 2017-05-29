@@ -53,7 +53,7 @@ module.exports = class Module extends Generator {
       cli: answers.cli,
       githubUsername: user.login,
       githubName: user.name,
-      githubEmail: user.email,
+      githubEmail: gitEmail,
       githubWebsite: user.blog
     }));
 
